@@ -1,0 +1,95 @@
+@import "vars.module";
+@import "global.module";
+
+.main {
+  display: flex;
+  height: 100%;
+}
+
+.dashboard{
+  width: 15%;
+  background-color: $dashBoardBG;
+  box-sizing: border-box;
+  padding: 40px;
+  color: #ffffff;
+  font-size: 20px;
+  line-height: 24px;
+  position: relative;
+  &__list{
+    display: flex;
+    flex-direction: column;
+    &-elem{
+      padding: 25px 10px;
+      position: relative;
+      transition: all 0.3s;
+      cursor: pointer;
+      &::before{
+        content: "";
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        left: -30px;
+        top: 28px;
+        background-repeat: no-repeat;
+      }
+      &:hover{
+        background-color: $dashBoardBGLight;
+        .dashboard__list-link{
+          padding-left: 10px;
+        }
+      }
+    }
+    &-elem.profile::before{
+      background-image: url("../img/profile-icon.svg");
+    }
+    &-elem.statistics::before{
+      background-image: url("../img/stats-icon.svg");
+    }
+    &-elem.settings::before{
+      background-image: url("../img/settings-icon.svg");
+    }
+    &-elem.about::before{
+      background-image: url("../img/about-icon.svg");
+    }
+    &-link{
+      color: #ffffff;
+      transition: all 0.3s;
+    }
+  }
+}
+
+.logo-container{
+  text-align: center;
+}
+
+.icon-logo{
+  width: 35%;
+  margin-bottom: 30px;
+}
+
+.exit {
+  position: absolute;
+  bottom: 10px;
+  &__btn{
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 20px;
+  }
+  &__icon{
+    position: absolute;
+    bottom: 1px;
+  }
+}
+
+
+.mainContent {
+  flex: 1;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+
+@import "media.module";
