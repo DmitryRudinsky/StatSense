@@ -6,7 +6,7 @@
   height: 100%;
 }
 
-.dashboard{
+.dashboard {
   width: 15%;
   background-color: $dashBoardBG;
   box-sizing: border-box;
@@ -15,15 +15,18 @@
   font-size: 20px;
   line-height: 24px;
   position: relative;
-  &__list{
+
+  &__list {
     display: flex;
     flex-direction: column;
-    &-elem{
+
+    &-elem {
       padding: 25px 10px;
       position: relative;
       transition: all 0.3s;
       cursor: pointer;
-      &::before{
+
+      &::before {
         content: "";
         width: 20px;
         height: 20px;
@@ -32,37 +35,44 @@
         top: 28px;
         background-repeat: no-repeat;
       }
-      &:hover{
+
+      &:hover {
         background-color: $dashBoardBGLight;
-        .dashboard__list-link{
+
+        .dashboard__list-link {
           padding-left: 10px;
         }
       }
     }
-    &-elem.profile::before{
+
+    &-elem.profile::before {
       background-image: url("../img/profile-icon.svg");
     }
-    &-elem.statistics::before{
+
+    &-elem.statistics::before {
       background-image: url("../img/stats-icon.svg");
     }
-    &-elem.settings::before{
+
+    &-elem.settings::before {
       background-image: url("../img/settings-icon.svg");
     }
-    &-elem.about::before{
+
+    &-elem.about::before {
       background-image: url("../img/about-icon.svg");
     }
-    &-link{
+
+    &-link {
       color: #ffffff;
       transition: all 0.3s;
     }
   }
 }
 
-.logo-container{
+.logo-container {
   text-align: center;
 }
 
-.icon-logo{
+.icon-logo {
   width: 35%;
   margin-bottom: 30px;
 }
@@ -70,14 +80,16 @@
 .exit {
   position: absolute;
   bottom: 10px;
-  &__btn{
+
+  &__btn {
     cursor: pointer;
     background: none;
     border: none;
     color: #ffffff;
     font-size: 20px;
   }
-  &__icon{
+
+  &__icon {
     position: absolute;
     bottom: 1px;
   }
@@ -89,7 +101,84 @@
   background-color: #ffffff;
   box-sizing: border-box;
   padding: 20px;
+
+  &__inner {
+    padding-top: 100px;
+  }
+
+  &__text{
+    text-align: center;
+    padding-bottom: 120px;
+  }
+
+  &__title {
+    font-size: 48px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+    margin-bottom: 40px;
+
+    span {
+      color: $dashBoardBG;
+    }
+  }
+
+  &__subTitle {
+    font-size: 32px;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+
+  &__form{
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+    &-formControl{
+      display: flex;
+      flex-direction: column;
+    }
+    &-label{
+      margin-bottom: 5px;
+    }
+    &-input, &-select{
+      font-size: 24px;
+      margin-bottom: 10px;
+      padding: 10px 15px;
+      border-radius: 8px;
+    }
+    &-buttonContainer{
+      margin-top: 50px;
+      display: block;
+      text-align: center;
+    }
+    &-button{
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: none;
+      background-color: $dashBoardBG;
+      color: #ffffff;
+      font-size: 24px;
+    }
+  }
+
+  &__title.visible, &__subTitle.visible, &__form.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
+.emptyField{
+  border-color: $errorColor;
+}
+
+.error-message {
+  color: $errorColor;
+  font-size: 12px;
+  transition: all 0.3s;
+}
+
 
 
 @import "media.module";
