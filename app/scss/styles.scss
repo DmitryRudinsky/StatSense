@@ -1,6 +1,6 @@
-@import "vars.module";
-@import "global.module";
-@import "keyframes.module";
+@import "./vars.module";
+@import "./global.module";
+@import "./keyframes.module";
 
 .main {
   display: flex;
@@ -26,6 +26,10 @@
       position: relative;
       transition: all 0.3s;
       cursor: pointer;
+
+      &.active{
+        background-color: $dashBoardBGLight;
+      }
 
       &::before {
         content: "";
