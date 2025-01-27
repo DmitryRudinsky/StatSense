@@ -41,6 +41,12 @@
   }
 }
 
+@media (max-width: 890px) {
+  .about__inner{
+    padding-top: 30px;
+  }
+}
+
 @media (max-width: 850px) {
   .dashboard {
     padding: 10px;

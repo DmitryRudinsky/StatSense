@@ -101,6 +101,11 @@ if (pageId === 'profilePage') {
         language.value = localStorage.language;
     }
 
+    const animatedProfile = document.getElementById('animatedProfile');
+    setTimeout(() => {
+        animatedProfile.classList.add('visible')
+    }, 750);
+
     document.getElementById('changeData__form').addEventListener('submit', (event) => {
         event.preventDefault();
         const emailError = document.getElementById('emailError');
@@ -128,6 +133,11 @@ if (pageId === 'profilePage') {
             })
         }
     });
+}
 
-
+if (pageId === 'aboutPage') {
+    const animatedAbout = document.getElementById('animatedAbout');
+    setTimeout(() => {
+        animatedAbout.classList.add('visible')
+    }, 750);
 }

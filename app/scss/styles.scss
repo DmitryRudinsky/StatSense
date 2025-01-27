@@ -83,6 +83,9 @@
   &__main{
     display: none;
   }
+  &__about{
+    margin-bottom: 50px;
+  }
 }
 
 .exit {
@@ -112,6 +115,9 @@
 
   &__inner {
     padding-top: 100px;
+    transition: opacity 1s ease, transform 1s ease;
+    transform: translateY(20px);
+    opacity: 0;
   }
 
   &__text{
@@ -171,7 +177,7 @@
     }
   }
 
-  &__title.visible, &__subTitle.visible, &__form.visible {
+  &__title.visible, &__subTitle.visible, &__form.visible, .mainContent__inner.visible {
     opacity: 1;
     transform: translateY(0);
   }
@@ -204,6 +210,10 @@
 .notice.show-notice {
   animation: slideIn 0.5s ease-out;
   transform: translateX(0px);
+}
+
+.text__info{
+  margin-bottom: 25px;
 }
 
 
