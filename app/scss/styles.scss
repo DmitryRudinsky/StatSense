@@ -76,6 +76,9 @@
 .icon-logo {
   width: 35%;
   margin-bottom: 30px;
+  &__main{
+    display: none;
+  }
 }
 
 .exit {
