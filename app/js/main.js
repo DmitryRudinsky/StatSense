@@ -39,3 +39,19 @@ document.getElementById('animatedForm').addEventListener('submit', (event) => {
         })
     }
 });
+
+document.querySelector('.dashboard__list').addEventListener('click', () => {
+    const notice = document.getElementById('notice');
+    notice.classList.add('show-notice');
+    setTimeout(() => {
+        notice.classList.remove('show-notice')
+    }, 2500)
+});
+
+document.querySelector('.exit').addEventListener('click', () => {
+    const notice = document.getElementById('notice');
+    notice.classList.add('show-notice');
+    setTimeout(() => {
+        notice.classList.remove('show-notice')
+    }, 2500)
+});
