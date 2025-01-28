@@ -92,15 +92,12 @@ if (pageId === 'indexPage') {
     });
 }
 
-if (pageId === 'profilePage' || pageId === 'aboutPage' || pageId === 'settingsPage' || pageId === 'statisticsPage') {
+if (pageId === 'profilePage' || pageId === 'aboutPage' || pageId === 'statisticsPage') {
     document.querySelector('.profile').addEventListener('click', () => {
         window.location.href = 'profile.html';
     })
     document.querySelector('.statistics').addEventListener('click', () => {
         window.location.href = 'statistics.html';
-    })
-    document.querySelector('.settings').addEventListener('click', () => {
-        window.location.href = 'settings.html';
     })
     document.querySelector('.about').addEventListener('click', () => {
         window.location.href = 'about.html';
