@@ -2,10 +2,17 @@ import {isValidForm} from './utils.js';
 
 const pageId = document.body.id;
 
-console.log(pageId);
-console.log(localStorage);
+const statisticsData = [
+    {
+        title: 'Скока надо деняк',
+        currentValue: 0,
+        necessaryValue: 100,
+    },
+];
+
 
 if (pageId === 'indexPage') {
+    document.body.style.overflow = 'hidden';
     document.addEventListener('DOMContentLoaded', () => {
         const animatedTitle = document.getElementById('animatedTitle');
         const animatedSubTitle = document.getElementById('animatedSubTitle');
@@ -86,15 +93,17 @@ if (pageId === 'profilePage' || pageId === 'aboutPage' || pageId === 'settingsPa
 
 if (pageId === 'profilePage') {
     const subTitle = document.querySelector('.mainContent__subTitle');
-    if (subTitle) {
+    const statisticsTitle = document.querySelector('.statisticsTitle');
+    if (subTitle && statisticsTitle) {
         subTitle.textContent = `Здравствуйте, ${localStorage.name}!`;
+        statisticsTitle.textContent = `Количество отслеживаемой статистики: ${statisticsData.length}`
     }
 
     const name = document.getElementById('name');
     const surname = document.getElementById('surname');
     const username = document.getElementById('username');
     const language = document.getElementById('language');
-    if (name && surname && username && localStorage){
+    if (name && surname && username && localStorage) {
         name.value = localStorage.name;
         surname.value = localStorage.surname;
         username.value = localStorage.username;
@@ -140,4 +149,39 @@ if (pageId === 'aboutPage') {
     setTimeout(() => {
         animatedAbout.classList.add('visible')
     }, 750);
+}
+
+if (pageId === 'statisticsPage') {
+
+    const animatedProfile = document.getElementById('animatedProfile');
+    setTimeout(() => {
+        animatedProfile.classList.add('visible')
+    }, 750);
+
+    const progressBars = document.getElementById('progressBars');
+
+    statisticsData.forEach(data => {
+        const block = document.createElement('div');
+        block.className = 'block';
+
+        const title = document.createElement('h2');
+        title.className = 'block__title';
+
+        title.textContent = data.title;
+
+        block.appendChild(title);
+
+        progressBars.appendChild(block);
+    });
+
+    const progressBar = document.querySelector('.progress-bar');
+    const progressText = document.querySelector('.progress-text');
+
+    const updateProgress = (value) => {
+        const progress = Math.min(Math.max(value, 0), 100);
+        const offset = 283 - (283 * progress) / 100;
+        progressBar.style.strokeDashoffset = offset;
+        progressText.textContent = `${progress}%`;
+    };
+    updateProgress(75);
 }

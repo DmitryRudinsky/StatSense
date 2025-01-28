@@ -11,7 +11,7 @@
 </head>
 <body id="statisticsPage">
 <main class="main">
-    <section class="dashboard">
+    <section class="dashboard dashboard__statistics">
         <div class="logo-container">
             <img alt="logo" class="icon-logo" src="img/logo.PNG">
         </div>
@@ -34,6 +34,29 @@
         <div class="exit">
             <button class="exit__btn">Выход</button>
             <img src="img/exit.svg" alt="exit" class="exit__icon">
+        </div>
+    </section>
+    <section class="mainContent">
+        <div class="container">
+            <div class="mainContent__inner statistics__inner" id="animatedProfile">
+                <div class="logo-container">
+                    <img alt="logo" class="icon-logo__statistics" src="img/logo.PNG">
+                </div>
+                <div class="mainContent__text">
+                    <h4 class="mainContent__subTitle visible" id="animatedSubTitle">
+                        Ваша статистика
+                    </h4>
+                </div>
+                <div class="progressBars__inner" id="progressBars">
+                    <div class="progress-container">
+                        <svg class="progress-svg" viewBox="0 0 100 100">
+                            <circle class="progress-bg" cx="50" cy="50" r="45"></circle>
+                            <circle class="progress-bar" cx="50" cy="50" r="45"></circle>
+                        </svg>
+                        <div class="progress-text">0%</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </main>
