@@ -33,6 +33,31 @@
             <img src="img/exit.svg" alt="exit" class="exit__icon">
         </div>
     </section>
+    <div id="modalBackdrop" class="modal-backdrop">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Добавить статистику</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label>Title:</label>
+                    <input type="text" id="titleInput">
+                </div>
+                <div class="input-group">
+                    <label>Current Value:</label>
+                    <input type="number" id="currentValueInput">
+                </div>
+                <div class="input-group">
+                    <label>Necessary Value:</label>
+                    <input type="number" id="necessaryValueInput">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="saveStatistics">Сохранить</button>
+            </div>
+        </div>
+    </div>
     <section class="mainContent">
         <div class="container">
             <div class="mainContent__inner statistics__inner" id="animatedProfile">
@@ -45,6 +70,11 @@
                     </h4>
                 </div>
                 <div class="progressBars__inner" id="progressBars"></div>
+            </div>
+            <div class="add__statistics-container">
+                <button id="add__statistics">
+                    <img src="img/plus.svg" alt="plus">
+                </button>
             </div>
         </div>
     </section>
