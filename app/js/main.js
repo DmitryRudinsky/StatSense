@@ -5,7 +5,27 @@ const pageId = document.body.id;
 const statisticsData = [
     {
         title: 'Скока надо деняк',
-        currentValue: 0,
+        currentValue: 11,
+        necessaryValue: 500,
+    },
+    {
+        title: 'Скока надо',
+        currentValue: 22,
+        necessaryValue: 100,
+    },
+    {
+        title: 'Скоко',
+        currentValue: 33,
+        necessaryValue: 100,
+    },
+    {
+        title: 'деняк',
+        currentValue: 44,
+        necessaryValue: 100,
+    },
+    {
+        title: 'надо',
+        currentValue: 55,
         necessaryValue: 100,
     },
 ];
@@ -153,35 +173,146 @@ if (pageId === 'aboutPage') {
 
 if (pageId === 'statisticsPage') {
 
+    const mainContent = document.querySelector('.mainContent');
+    mainContent.style.backgroundColor = '#eaf0f6';
+
+    document.body.style.backgroundColor = '#eaf0f6';
+
     const animatedProfile = document.getElementById('animatedProfile');
     setTimeout(() => {
-        animatedProfile.classList.add('visible')
+        animatedProfile.classList.add('visible');
     }, 750);
 
     const progressBars = document.getElementById('progressBars');
 
-    statisticsData.forEach(data => {
+    statisticsData.forEach((data, index) => {
         const block = document.createElement('div');
-        block.className = 'block';
+        block.classList.add('progress-container');
 
         const title = document.createElement('h2');
-        title.className = 'block__title';
-
         title.textContent = data.title;
+        title.classList.add('progress-container__title');
+
+        const subTitle = document.createElement('p');
+        subTitle.textContent = `${data.currentValue} / ${data.necessaryValue}`;
+        subTitle.classList.add('progress-container__subTitle');
+
+        const buttonBlock = document.createElement('div');
+        buttonBlock.classList.add('buttonBlock');
+
+        const minusButton = document.createElement('button');
+        minusButton.textContent = 'Убавить';
+        minusButton.setAttribute('id','minusButton');
+
+        const plusButton = document.createElement('button');
+        plusButton.textContent = 'Добавить';
+        plusButton.setAttribute('id','plusButton');
+
+        const inputNumber = document.createElement('input');
+        inputNumber.placeholder = 'Введите число';
+        inputNumber.setAttribute('id', 'inputNumber');
+        inputNumber.setAttribute('type', 'number');
+
+        const checkboxContainer = document.createElement('div');
+        checkboxContainer.classList.add('checkboxContainer');
+
+        const checkboxLabel = document.createElement('label');
+        checkboxLabel.classList.add('switch');
+        checkboxLabel.setAttribute('htmlFor','checkbox');
+
+        const checkboxInput = document.createElement('input');
+        checkboxInput.setAttribute('type','checkbox');
+        checkboxInput.setAttribute('id','checkbox');
+
+        const checkboxDiv = document.createElement('div');
+        checkboxDiv.classList.add('slider');
+        checkboxDiv.classList.add('round');
+
+        const checkBoxText = document.createElement('label');
+        checkBoxText.classList.add('checkBox__text');
+        checkBoxText.textContent = 'Animated';
+
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.classList.add('progress-svg');
+        svg.setAttribute('viewBox', '0 0 100 100');
+
+        const progressBg = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        progressBg.classList.add('progress-bg');
+        progressBg.setAttribute('cx', '50');
+        progressBg.setAttribute('cy', '50');
+        progressBg.setAttribute('r', '20');
+
+        const progressBar = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        progressBar.classList.add('progress-bar');
+        progressBar.setAttribute('cx', '50');
+        progressBar.setAttribute('cy', '50');
+        progressBar.setAttribute('r', '20');
+
+        const progressText = document.createElement('div');
+        progressText.classList.add('progress-text');
+
+        const updateProgress = () => {
+            const progress = Math.min(Math.max(Math.floor((data.currentValue / data.necessaryValue) * 100), 0), 100);
+            progressText.textContent = `${progress}%`;
+            subTitle.textContent = `${data.currentValue} / ${data.necessaryValue}`;
+            const offset = 283 - Math.floor(125 / 100 * progress);
+            progressBar.style.strokeDashoffset = String(offset);
+            inputNumber.value = data.currentValue;
+        };
+
+        minusButton.addEventListener('click', () => {
+            if (data.currentValue > 0) {
+                data.currentValue -= 1;
+                updateProgress();
+            }
+        });
+
+        plusButton.addEventListener('click', () => {
+            if (data.currentValue < data.necessaryValue) {
+                data.currentValue += 1;
+                updateProgress();
+            }
+        });
+
+        inputNumber.addEventListener('input', (e) => {
+            const inputValue = e.target.value;
+
+            if (inputValue === '') {
+                data.currentValue = 0;
+                updateProgress();
+            } else {
+                const newValue = parseInt(inputValue, 10);
+                if (!isNaN(newValue) && newValue >= 0 && newValue <= data.necessaryValue) {
+                    data.currentValue = newValue;
+                    updateProgress();
+                } else {
+                    e.target.value = data.currentValue;
+                }
+            }
+        });
+
+        updateProgress();
+
+        checkboxLabel.appendChild(checkboxInput);
+        checkboxLabel.appendChild(checkboxDiv);
+
+        svg.appendChild(progressBg);
+        svg.appendChild(progressBar);
+
+        buttonBlock.appendChild(minusButton);
+        buttonBlock.appendChild(inputNumber);
+        buttonBlock.appendChild(plusButton);
+
+        checkboxContainer.appendChild(checkboxLabel)
+        checkboxContainer.appendChild(checkBoxText)
 
         block.appendChild(title);
-
+        block.appendChild(subTitle);
+        block.appendChild(buttonBlock);
+        block.appendChild(checkboxContainer);
+        block.appendChild(svg);
+        block.appendChild(progressText);
         progressBars.appendChild(block);
     });
-
-    const progressBar = document.querySelector('.progress-bar');
-    const progressText = document.querySelector('.progress-text');
-
-    const updateProgress = (value) => {
-        const progress = Math.min(Math.max(value, 0), 100);
-        const offset = 283 - (283 * progress) / 100;
-        progressBar.style.strokeDashoffset = offset;
-        progressText.textContent = `${progress}%`;
-    };
-    updateProgress(75);
 }
+

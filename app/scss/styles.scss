@@ -132,6 +132,7 @@
       transform: translateY(20px);
       padding-top: 25px;
       opacity: 0;
+      padding-bottom: 50px;
     }
   }
 
@@ -236,26 +237,32 @@
 }
 
 .progress-container {
+  background-color: #ffffff;
+  border-radius: 8px;
   position: relative;
-  width: 150px;
-  height: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  &__title{
+    margin-top: 75px;
+    text-align: center;
+    padding: 0 10px;
+  }
+  &__subTitle{
+    margin-bottom: 10px;
+    padding: 0 10px;
+  }
 }
 
 .progress-svg {
-  width: 100%;
-  height: 100%;
   transform: rotate(-90deg);
 }
 
 .progress-bg, .progress-bar {
   fill: none;
-  stroke-width: 10;
-  r: 45;
-  cx: 50;
-  cy: 50;
+  stroke-width: 5;
+  width: 100px;
 }
 
 .progress-bg {
@@ -263,7 +270,7 @@
 }
 
 .progress-bar {
-  stroke: #4caf50;
+  stroke: $dashBoardBG;
   stroke-linecap: round;
   stroke-dasharray: 283;
   stroke-dashoffset: 283;
@@ -272,9 +279,101 @@
 
 .progress-text {
   position: absolute;
+  top: 63%;
+  left: 47%;
   font-size: 1.5rem;
   font-weight: bold;
-  color: #4caf50;
+  color: $dashBoardBG;
+}
+
+.progressBars__inner{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px
+}
+
+.buttonBlock{
+  margin-bottom: 25px;
+}
+
+#minusButton,
+#plusButton{
+  color: #ffffff;
+  border: none;
+  background-color: $dashBoardBG;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+#minusButton{
+  margin-right: 20px;
+}
+
+#plusButton{
+  margin-left: 20px;
+}
+
+#inputNumber{
+  padding: 10px;
+  border-radius: 8px;
+  border-color: #333333;
+}
+
+.switch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+}
+
+.switch input {
+  display:none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: .4s;
+  width: 26px;
+}
+
+input:checked + .slider {
+  background-color: $dashBoardBG;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.checkboxContainer{
+  display: flex;
+}
+
+.checkBox__text{
+  margin-left: 15px;
 }
 
 
