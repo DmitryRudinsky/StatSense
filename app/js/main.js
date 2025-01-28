@@ -185,7 +185,7 @@ if (pageId === 'statisticsPage') {
 
     const progressBars = document.getElementById('progressBars');
 
-    statisticsData.forEach((data, index) => {
+    statisticsData.forEach((data) => {
         const block = document.createElement('div');
         block.classList.add('progress-container');
 
@@ -213,24 +213,47 @@ if (pageId === 'statisticsPage') {
         inputNumber.setAttribute('id', 'inputNumber');
         inputNumber.setAttribute('type', 'number');
 
-        const checkboxContainer = document.createElement('div');
-        checkboxContainer.classList.add('checkboxContainer');
+        const checkboxInner = document.createElement('div');
+        checkboxInner.classList.add('checkboxInner');
 
-        const checkboxLabel = document.createElement('label');
-        checkboxLabel.classList.add('switch');
-        checkboxLabel.setAttribute('htmlFor','checkbox');
+        const checkboxContainerAnimated = document.createElement('div');
+        checkboxContainerAnimated.classList.add('checkboxContainer');
+        checkboxContainerAnimated.classList.add('checkboxContainerAnimated');
 
-        const checkboxInput = document.createElement('input');
-        checkboxInput.setAttribute('type','checkbox');
-        checkboxInput.setAttribute('id','checkbox');
+        const checkboxContainerHidden = document.createElement('div');
+        checkboxContainerHidden.classList.add('checkboxContainer');
 
-        const checkboxDiv = document.createElement('div');
-        checkboxDiv.classList.add('slider');
-        checkboxDiv.classList.add('round');
+        const checkboxLabelAnimated = document.createElement('label');
+        checkboxLabelAnimated.classList.add('switch');
+        checkboxLabelAnimated.setAttribute('htmlFor','checkbox');
 
-        const checkBoxText = document.createElement('label');
-        checkBoxText.classList.add('checkBox__text');
-        checkBoxText.textContent = 'Animated';
+        const checkboxLabelHidden = document.createElement('label');
+        checkboxLabelHidden.classList.add('switch');
+        checkboxLabelHidden.setAttribute('htmlFor','checkbox');
+
+        const checkboxInputAnimated = document.createElement('input');
+        checkboxInputAnimated.setAttribute('type','checkbox');
+        checkboxInputAnimated.setAttribute('id','checkbox');
+
+        const checkboxInputHidden = document.createElement('input');
+        checkboxInputHidden.setAttribute('type','checkbox');
+        checkboxInputHidden.setAttribute('id','checkboxHidden');
+
+        const checkboxDivAnimated = document.createElement('div');
+        checkboxDivAnimated.classList.add('slider');
+        checkboxDivAnimated.classList.add('round');
+
+        const checkboxDivHidden = document.createElement('div');
+        checkboxDivHidden.classList.add('slider');
+        checkboxDivHidden.classList.add('round');
+
+        const checkBoxTextAnimated = document.createElement('label');
+        checkBoxTextAnimated.classList.add('checkBox__text');
+        checkBoxTextAnimated.textContent = 'Animated';
+
+        const checkBoxTextHidden = document.createElement('label');
+        checkBoxTextHidden.classList.add('checkBox__text');
+        checkBoxTextHidden.textContent = 'Hidden';
 
         const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
         svg.classList.add('progress-svg');
@@ -291,10 +314,46 @@ if (pageId === 'statisticsPage') {
             }
         });
 
+        checkboxContainerAnimated.addEventListener('change', (e) => {
+            const isChecked = e.target.checked;
+
+            const animatedBlock = block.querySelector('.progress-svg');
+
+            if (isChecked) {
+                animatedBlock.classList.remove('animated');
+                void animatedBlock.offsetWidth;
+                animatedBlock.classList.add('animated');
+            } else {
+                animatedBlock.classList.remove('animated');
+            }
+        });
+
+        checkboxContainerHidden.addEventListener('change', (e) => {
+            const isChecked = e.target.checked;
+
+            const title = block.querySelector('.progress-container__title');
+            const subTitle = block.querySelector('.progress-container__subTitle');
+            const buttonBlock = block.querySelector('.buttonBlock');
+            const checkboxContainerAnimated = block.querySelector('.checkboxContainerAnimated');
+            const progressSvg = block.querySelector('.progress-svg');
+            const progressText = block.querySelector('.progress-text');
+
+            const opacityValue = isChecked ? '0' : '1';
+
+            title.style.opacity = opacityValue;
+            subTitle.style.opacity = opacityValue;
+            buttonBlock.style.opacity = opacityValue;
+            checkboxContainerAnimated.style.opacity = opacityValue;
+            progressSvg.style.opacity = opacityValue;
+            progressText.style.opacity = opacityValue;
+        });
+
         updateProgress();
 
-        checkboxLabel.appendChild(checkboxInput);
-        checkboxLabel.appendChild(checkboxDiv);
+        checkboxLabelAnimated.appendChild(checkboxInputAnimated);
+        checkboxLabelAnimated.appendChild(checkboxDivAnimated);
+        checkboxLabelHidden.appendChild(checkboxInputHidden);
+        checkboxLabelHidden.appendChild(checkboxDivHidden);
 
         svg.appendChild(progressBg);
         svg.appendChild(progressBar);
@@ -303,13 +362,19 @@ if (pageId === 'statisticsPage') {
         buttonBlock.appendChild(inputNumber);
         buttonBlock.appendChild(plusButton);
 
-        checkboxContainer.appendChild(checkboxLabel)
-        checkboxContainer.appendChild(checkBoxText)
+        checkboxContainerAnimated.appendChild(checkboxLabelAnimated);
+        checkboxContainerAnimated.appendChild(checkBoxTextAnimated);
+        checkboxContainerHidden.appendChild(checkboxLabelHidden);
+        checkboxContainerHidden.appendChild(checkBoxTextHidden);
+
+
+        checkboxInner.appendChild(checkboxContainerAnimated);
+        checkboxInner.appendChild(checkboxContainerHidden);
 
         block.appendChild(title);
         block.appendChild(subTitle);
         block.appendChild(buttonBlock);
-        block.appendChild(checkboxContainer);
+        block.appendChild(checkboxInner);
         block.appendChild(svg);
         block.appendChild(progressText);
         progressBars.appendChild(block);
