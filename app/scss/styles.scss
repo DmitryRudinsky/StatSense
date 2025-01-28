@@ -115,9 +115,13 @@
 
   &__inner {
     padding-top: 100px;
+
     transition: opacity 1s ease, transform 1s ease;
-    transform: translateY(20px);
-    opacity: 0;
+    &.profile__inner,
+    &.about__inner{
+      transform: translateY(20px);
+      opacity: 0;
+    }
   }
 
   &__text{
