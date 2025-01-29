@@ -11,7 +11,7 @@
 </head>
 <body id="statisticsPage">
 <main class="main">
-    <section class="dashboard dashboard__statistics">
+    <section class="dashboard dashboard__statistics" id="dashboard">
         <div class="logo-container">
             <img alt="logo" class="icon-logo" src="img/logo.PNG">
         </div>
@@ -41,15 +41,15 @@
             </div>
             <div class="modal-body">
                 <div class="input-group">
-                    <label>Title:</label>
+                    <label>Название:</label>
                     <input type="text" id="titleInput">
                 </div>
                 <div class="input-group">
-                    <label>Current Value:</label>
+                    <label>Текущее значение:</label>
                     <input type="number" id="currentValueInput">
                 </div>
                 <div class="input-group">
-                    <label>Necessary Value:</label>
+                    <label>Необходимое значение:</label>
                     <input type="number" id="necessaryValueInput">
                 </div>
             </div>
@@ -58,13 +58,16 @@
             </div>
         </div>
     </div>
+    <button class="burger__button" id="open-burger">
+        <img src="img/burger.svg" alt="burger" class="burger__logo">
+    </button>
     <section class="mainContent">
         <div class="container">
             <div class="mainContent__inner statistics__inner" id="animatedProfile">
-                <div class="logo-container">
+                <div class="logo-container-statistics">
                     <img alt="logo" class="icon-logo__statistics" src="img/logo.PNG">
                 </div>
-                <div class="mainContent__text">
+                <div class="mainContent__text mainContent__text-statistics">
                     <h4 class="mainContent__subTitle visible" id="animatedSubTitle">
                         Ваша статистика
                     </h4>

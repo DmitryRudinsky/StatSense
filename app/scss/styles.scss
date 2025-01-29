@@ -78,7 +78,7 @@
   }
 }
 
-.logo-container {
+.logo-container, .logo-container-statistics {
   text-align: center;
 }
 
@@ -279,8 +279,8 @@
 
 .progress-text {
   position: absolute;
-  top: 63%;
-  left: 47%;
+  top: 65%;
+  left: 48%;
   font-size: 1.5rem;
   font-weight: bold;
   color: $dashBoardBG;
@@ -470,7 +470,7 @@ input:checked + .slider:before {
 }
 
 #saveStatistics {
-  background: #4caf50;
+  background: $dashBoardBG;
   color: white;
   border: none;
   padding: 8px 16px;
@@ -485,6 +485,15 @@ input:checked + .slider:before {
   border: none;
   background: none;
   cursor: pointer;
+}
+
+.burger{
+  &__button{
+    cursor: pointer;
+    border: none;
+    background: none;
+    display: none;
+  }
 }
 
 

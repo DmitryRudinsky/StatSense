@@ -4,6 +4,16 @@
   }
 }
 
+@media (max-width: 1440px) {
+  .progressBars__inner {
+    grid-template-columns: 1fr;
+    width: 50%;
+  }
+  .progress-container {
+    transform: translateX(295px);
+  }
+}
+
 @media (max-width: 1310px) {
   .mainContent__title {
     font-size: 36px;
@@ -11,26 +21,32 @@
   .mainContent__subTitle {
     font-size: 30px;
   }
+  .progress-container {
+    transform: translateX(255px);
+  }
 }
 
 @media (max-width: 1080px) {
   .dashboard__list-elem {
     padding: 30px 0;
-    &::before{
+
+    &::before {
       top: 33px;
     }
   }
-  .icon-logo{
+  .icon-logo {
     width: 50%;
   }
 }
 
 @media (max-width: 1000px) {
-  .dashboard{
+  .dashboard {
     padding: 20px;
+
     &__list-elem {
       padding: 20px 0;
-      &::before{
+
+      &::before {
         display: none;
       }
     }
@@ -39,11 +55,21 @@
   .mainContent__title {
     line-height: 50px;
   }
+
+  .progress-container {
+    transform: translateX(235px);
+  }
+  .progress-text {
+    top: 67%
+  }
 }
 
 @media (max-width: 890px) {
-  .about__inner{
+  .about__inner {
     padding-top: 30px;
+  }
+  .progress-container {
+    transform: translateX(205px);
   }
 }
 
@@ -51,24 +77,134 @@
   .dashboard {
     padding: 10px;
   }
+  .buttonBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  #minusButton {
+    margin-right: 0;
+    margin-bottom: 5px;
+  }
+  #plusButton {
+    margin-left: 0;
+    margin-top: 5px;
+  }
+  .progress-text {
+    top: 72%;
+    left: 47%;
+  }
+  .progress-container {
+    transform: translateX(190px);
+  }
 }
 
 @media (max-width: 700px) {
-  body{
+  body {
     overflow: scroll;
   }
-  .dashboard, .notice {
+  .main {
+    flex-direction: column;
+  }
+  .notice {
     display: none;
   }
-  .mainContent__form-buttonContainer{
+  .mainContent__form-buttonContainer {
     padding-bottom: 20px;
   }
-  .icon-logo__main{
+  .icon-logo {
+    width: 15%;
+  }
+  .icon-logo__main {
     display: inline-block;
     width: 20%;
   }
-  .mainContent__inner{
+  .mainContent__inner {
     padding-top: 20px;
+  }
+  .dashboard {
+    width: 100%;
+    transform: translateY(-400px);
+    position: absolute;
+    transition: all 0.3s;
+
+    &__nav {
+      margin-bottom: 40px;
+    }
+
+    &.open__dashboard {
+      transform: translateY(0);
+      position: static;
+    }
+  }
+
+  .exit__icon {
+    bottom: 0;
+  }
+
+  .exit__btn {
+    padding-left: 0;
+  }
+
+  .burger {
+    &__button {
+      display: block;
+      text-align: start;
+    }
+  }
+
+  .progress-container {
+    transform: translateX(0);
+  }
+
+  .dashboard__statistics {
+    transform: translateY(-700px);
+    position: absolute;
+    height: 687px;
+  }
+
+  .logo-container-statistics,
+  .mainContent__text-statistics {
+    display: none;
+  }
+
+  .progress-text {
+    top: 72%;
+    left: 47%;
+  }
+
+  .statistics__inner {
+    transform: translateX(0) !important;
+    display: flex;
+    justify-content: center;
+  }
+
+  .progress-container {
+    width: 400px;
+    transform: translateX(-30px);
+  }
+}
+
+@media (max-width: 425px) {
+  .progress-container {
+    width: 350px;
+    transform: translateX(-85px);
+  }
+  .progress-text {
+    top: 74%;
+    left: 47%;
+  }
+}
+
+@media (max-width: 375px) {
+  .progress-container {
+    width: 300px;
+    transform: translateX(-75px);
+  }
+  .progress-text {
+    top: 75%;
+    left: 45%;
   }
 }
 
@@ -79,9 +215,17 @@
   .mainContent__subTitle {
     font-size: 24px;
   }
-  .icon-logo__main{
+  .icon-logo__main {
     display: inline-block;
     width: 20%;
+  }
+  .progress-container {
+    width: 250px;
+    transform: translateX(-65px);
+  }
+  .progress-text {
+    top: 77%;
+    left: 43%;
   }
 }
 

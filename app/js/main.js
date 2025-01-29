@@ -109,6 +109,11 @@ if (pageId === 'profilePage') {
         animatedProfile.classList.add('visible')
     }, 750);
 
+    document.getElementById('open-burger').addEventListener('click', () => {
+        const dashboard = document.getElementById('dashboard');
+        dashboard.classList.toggle('open__dashboard');
+    })
+
     document.getElementById('changeData__form').addEventListener('submit', (event) => {
         event.preventDefault();
         const emailError = document.getElementById('emailError');
@@ -143,9 +148,20 @@ if (pageId === 'aboutPage') {
     setTimeout(() => {
         animatedAbout.classList.add('visible')
     }, 750);
+
+    document.getElementById('open-burger').addEventListener('click', () => {
+        const dashboard = document.getElementById('dashboard');
+        dashboard.classList.toggle('open__dashboard');
+    })
 }
 
 if (pageId === 'statisticsPage') {
+
+    document.getElementById('open-burger').addEventListener('click', () => {
+        console.log('work');
+        const dashboard = document.getElementById('dashboard');
+        dashboard.classList.toggle('open__dashboard');
+    })
 
     const mainContent = document.querySelector('.mainContent');
     mainContent.style.backgroundColor = '#eaf0f6';
