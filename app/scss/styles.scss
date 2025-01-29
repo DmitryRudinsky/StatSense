@@ -478,5 +478,14 @@ input:checked + .slider:before {
   cursor: pointer;
 }
 
+.delete__statistics{
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
 
 @import "media.module";

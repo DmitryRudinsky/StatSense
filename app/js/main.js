@@ -215,6 +215,15 @@ if (pageId === 'statisticsPage') {
             const block = document.createElement('div');
             block.classList.add('progress-container');
 
+
+            const cross = document.createElement('img');
+            cross.classList.add('delete__statistics-img');
+            cross.setAttribute('alt', 'delete');
+            cross.setAttribute('src', 'img/cross.svg');
+
+            const crossButton = document.createElement('button');
+            crossButton.classList.add('delete__statistics');
+
             const title = document.createElement('h2');
             title.textContent = data.title;
             title.classList.add('progress-container__title');
@@ -304,6 +313,17 @@ if (pageId === 'statisticsPage') {
                 localStorage.setItem('statisticsData', JSON.stringify(statisticsData));
             };
 
+            const deleteFromLocalStorage = (title) => {
+                let statisticsData = JSON.parse(localStorage.getItem('statisticsData')) || [];
+                statisticsData = statisticsData.filter(item => item.title !== title);
+                localStorage.setItem('statisticsData', JSON.stringify(statisticsData));
+                window.location.reload();
+            };
+
+            crossButton.addEventListener('click', () => {
+                deleteFromLocalStorage(data.title);
+            });
+
             const updateProgress = () => {
                 const progress = Math.min(Math.max(Math.floor((data.currentValue / data.necessaryValue) * 100), 0), 100);
                 progressText.textContent = `${progress}%`;
@@ -385,6 +405,8 @@ if (pageId === 'statisticsPage') {
 
             updateProgress();
 
+            crossButton.appendChild(cross);
+
             checkboxLabelAnimated.appendChild(checkboxInputAnimated);
             checkboxLabelAnimated.appendChild(checkboxDivAnimated);
             checkboxLabelHidden.appendChild(checkboxInputHidden);
@@ -406,6 +428,7 @@ if (pageId === 'statisticsPage') {
             checkboxInner.appendChild(checkboxContainerAnimated);
             checkboxInner.appendChild(checkboxContainerHidden);
 
+            block.appendChild(crossButton);
             block.appendChild(title);
             block.appendChild(subTitle);
             block.appendChild(buttonBlock);
